@@ -405,6 +405,68 @@
             color: #0b2545;
         }
 
+        /* ===== TEAM SECTION (NEW) ===== */
+        .team-section {
+            background: linear-gradient(145deg, #ffffff, #f0f7fa);
+            padding: 4rem 0;
+        }
+
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 30px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 30px -12px rgba(10,124,124,0.2);
+            flex: 1 1 300px;
+            max-width: 400px;
+            border: 1px solid rgba(10,124,124,0.2);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 40px -15px var(--primary);
+        }
+
+        .team-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            background: var(--primary-soft);
+            padding: 1rem;
+            border-radius: 60px;
+        }
+
+        .team-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .team-reg {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            word-break: break-word;
+        }
+
+        .team-role {
+            font-size: 1.1rem;
+            color: #4a5f7a;
+            font-weight: 500;
+        }
+
         /* ===== CONTACT ===== */
         .contact-form {
             background: white;
@@ -534,6 +596,12 @@
             .btn-primary {
                 padding: 0.9rem 2rem;
             }
+            .team-name {
+                font-size: 1.5rem;
+            }
+            .team-reg {
+                font-size: 1.1rem;
+            }
         }
 
         /* scroll reveal initial hidden */
@@ -558,6 +626,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#features">Features</a></li>
             <li><a href="#model">Model</a></li>
+            <li><a href="#team">Team</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -570,11 +639,11 @@
             <div class="hero-content">
                 <h1>Detect Fraud <br>Before It Happens</h1>
                 <p>AI-powered system that analyzes transactions and predicts fraudulent activities in real-time.</p>
-                <!-- Input + primary button (glass card) -->
+                <!-- Input + GO button with new link -->
                 <div class="transaction-card">
                     <i class="fas fa-link"></i>
                     <input type="text" placeholder="Paste transaction link / data... (optional)" id="transactionInput">
-                    <button class="btn-primary" id="checkTransactionBtn"><i class="fas fa-robot"></i> Check Transaction</button>
+                    <button class="btn-primary" id="goToWebsiteBtn"><i class="fas fa-external-link-alt"></i> GO</button>
                 </div>
                 <p style="font-size: 1rem; opacity: 0.7;"><i class="fas fa-lock" style="margin-right: 6px;"></i>Secure · Real-time · AI</p>
             </div>
@@ -651,6 +720,28 @@
         </div>
     </section>
 
+    <!-- TEAM SECTION (with bold names and registration numbers) -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <h2 class="section-title reveal">Our Team</h2>
+            <p class="section-subtitle reveal">Developed with expertise and innovation</p>
+            <div class="team-grid">
+                <div class="team-card reveal">
+                    <i class="fas fa-user-circle"></i>
+                    <div class="team-name">MRITUNJAY KUMAR</div>
+                    <div class="team-reg"><strong>REG.NO 3502210057</strong></div>
+                    <div class="team-role">Lead Developer & ML Engineer</div>
+                </div>
+                <div class="team-card reveal">
+                    <i class="fas fa-user-circle"></i>
+                    <div class="team-name">AVINASH KUMAR</div>
+                    <div class="team-reg"><strong>REG.NO 3502210011</strong></div>
+                    <div class="team-role">Full Stack & Security Specialist</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CONTACT SECTION -->
     <section id="contact">
         <div class="container">
@@ -671,7 +762,7 @@
     <footer>
         <div class="footer-container">
             <div class="copyright">
-                <i class="fas fa-copyright"></i> 2025 E‑Commerce Fraud Detection · Built by Mritunjay Kumar
+                <i class="fas fa-copyright"></i> 2025 E‑Commerce Fraud Detection · Developed by Mritunjay Kumar & Avinash Kumar
             </div>
             <div class="footer-links">
                 <a href="#"><i class="fab fa-github"></i> GitHub</a>
@@ -706,12 +797,12 @@
                 navMenu.classList.toggle('active');
             });
 
-            // === PRIMARY BUTTON REDIRECT ===
-            const checkBtn = document.getElementById('checkTransactionBtn');
-            if (checkBtn) {
-                checkBtn.addEventListener('click', function() {
-                    // redirect to Flask app (prediction page)
-                    window.location.href = "http://127.0.0.1:5000/";
+            // === GO BUTTON REDIRECT to your specified URL ===
+            const goBtn = document.getElementById('goToWebsiteBtn');
+            if (goBtn) {
+                goBtn.addEventListener('click', function() {
+                    // Redirect to the URL you provided
+                    window.location.href = "https://url-shortener.me/F911";
                 });
             }
 
@@ -742,7 +833,7 @@
                 });
             }
 
-            // make progress bars nicer (already set static widths, but let's set them via data if needed, but fine)
+            // make progress bars nicer (already set static widths, but fine)
         })();
     </script>
 
@@ -753,6 +844,12 @@
         .hero .hero-content * { transition-delay: 0.1s; } 
         .btn-primary, .feature-card { transition: transform 0.25s, box-shadow 0.3s, background 0.2s; }
         .nav-menu a { font-weight: 500; }
+        /* Bold registration numbers */
+        .team-reg strong {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
     </style>
 </body>
 </html>
